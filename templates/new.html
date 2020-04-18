@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if render == username %}
+    <h1> Новая запись</h1>
+{%else%}
+    <h1>Редактировать запись</h1>
+{% endif %}
+    <form method="POST" class="post-form" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="col-md-6 offset-md-4">
+                            <button type="submit" class="btn btn-primary">
+                               {% if render == username %}
+                                Сохранить
+                                {%else%}
+                                Изменить
+                                {% endif %}
+                            </button>
+                    </div>
+    </form>
+
+
+{% endblock %}
